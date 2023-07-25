@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes":  [
+    "minecraft:river"
+  ],
+  "spawners": {
+    "type": "platypusmod:platypus",
+    "weight": 200,
+    "minCount": 1,
+    "maxCount": 4
+  }
+}
