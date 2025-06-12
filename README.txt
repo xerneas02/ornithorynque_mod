@@ -1,46 +1,152 @@
+# Ornithorynque Mod (Platypus Mod) for Minecraft (WIP)
 
-Source installation information for modders
--------------------------------------------
-This code follows the Minecraft Forge installation methodology. It will apply
-some small patches to the vanilla MCP source code, giving you and it access 
-to some of the data and functions you need to build a successful mod.
+An early‑stage Forge mod adding **platypuses (ornithorynques)** and **snails** to Minecraft, plus new items, eggs, buckets, foods, and a slime‑ball farming mechanic.
 
-Note also that the patches are built against "un-renamed" MCP source code (aka
-SRG Names) - this means that you will not be able to read them directly against
-normal code.
+> *This mod is a Work In Progress — expect bugs and missing features!*
 
-Setup Process:
-==============================
+---
 
-Step 1: Open your command-line and browse to the folder where you extracted the zip file.
+## 📦 Features
 
-Step 2: You're left with a choice.
-If you prefer to use Eclipse:
-1. Run the following command: `gradlew genEclipseRuns` (`./gradlew genEclipseRuns` if you are on Mac/Linux)
-2. Open Eclipse, Import > Existing Gradle Project > Select Folder 
-   or run `gradlew eclipse` to generate the project.
+* 🦆 **Platypus Entity**
 
-If you prefer to use IntelliJ:
-1. Open IDEA, and import project.
-2. Select your build.gradle file and have it import.
-3. Run the following command: `gradlew genIntellijRuns` (`./gradlew genIntellijRuns` if you are on Mac/Linux)
-4. Refresh the Gradle Project in IDEA if required.
+  * Wild platypuses spawn in swamps and mangrove biomes.
+  * Baby platypuses grow up over time.
+  * Platypus animations, and movement behavior.
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can 
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+* 🥚 **Platypus Eggs & Buckets**
 
-Mapping Names:
-=============================
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license, if you do not agree with it you can change your mapping names to other crowdsourced names in your 
-build.gradle. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
+  * Platypuses randomly drop eggs.
+  * Platypus eggs act like chicken eggs.
+  * `platypus_in_bucket` item: capture adult platypus in a bucket, carry & release.
 
-Additional Resources: 
-=========================
-Community Documentation: https://mcforge.readthedocs.io/en/latest/gettingstarted/  
-LexManos' Install Video: https://www.youtube.com/watch?v=8VEdtQLuLO0  
-Forge Forum: https://forums.minecraftforge.net/  
-Forge Discord: https://discord.gg/UvedJ9m  
+* 🐌 **Snails**
+
+  * New snail mobs crawling on leaves and grass.
+  * Snails drop snail mucus when killed.
+
+* 🍽️ **Foods & Recipes**
+
+  * Snails are used to craft  slime balls and feed/temp platypuses.
+
+* ⚙️ **Creative Mode Tab**
+
+  * A dedicated creative tab containing all mod items & blocks.
+
+* 🔧 **Mod Events & Data**
+
+  * Custom event handlers for entity registration, spawn rules, and drops.
+  * JSON recipes, loot tables, and data files under `src/main/resources/data/platypusmod/`.
+
+---
+
+## 🚀 Getting Started (For Modders)
+
+This project follows the **Minecraft Forge** MDK installation methodology and patching against un‑renamed (SRG) MCP code.
+
+### Prerequisites
+
+* Java JDK 8 or above
+* Gradle Wrapper (included)
+* IntelliJ IDEA or Eclipse
+
+### Setup Process
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/yourusername/ornithorynque_mod.git
+   cd ornithorynque_mod
+   ```
+
+2. **Import as a Gradle Project**
+
+   **Eclipse**:
+
+   ```bash
+   ./gradlew genEclipseRuns
+   ```
+
+   * In Eclipse: **File → Import → Existing Gradle Project → Select Folder**
+
+   **IntelliJ IDEA**:
+
+   * **File → Open** the `build.gradle` file.
+   * Wait for Gradle sync.
+
+   ```bash
+   ./gradlew genIntellijRuns
+   ```
+
+3. **Refresh Dependencies** (if needed)
+
+   ```bash
+   ./gradlew --refresh-dependencies
+   ```
+
+4. **Clean & Rebuild**
+
+   ```bash
+   ./gradlew clean build
+   ```
+
+### Mapping Names
+
+By default, this MDK uses **Mojang mappings** (SRG names). To switch to community mappings (MCP or Yarn), update `mappings` in `build.gradle` accordingly.
+
+---
+
+## 🏗️ Project Structure
+
+```
+ornithorynque_mod/
+├── build.gradle           # Gradle build script
+├── settings.gradle
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── net/xerneas02/platypusmod/
+│   │   │       ├── PlatypusMod.java        # @Mod entrypoint
+│   │   │       ├── ModBlocks.java           # Custom block registration
+│   │   │       ├── ModItems.java            # Item & bucket registration
+│   │   │       ├── ModEntity.java           # EntityType registration
+│   │   │       ├── ModCreativeModeTab.java  # Creative tab setup
+│   │   │       ├── ModEvents.java           # Event handlers (registration, spawns)
+│   │   │       ├── entity/
+│   │   │       │   ├── PlatypusEntity.java
+│   │   │       │   └── SnailEntity.java
+│   │   │       └── item/
+│   │   │           └── PlatypusEggItem.java
+│   │   └── resources/
+│   │       ├── assets/platypusmod/
+│   │       │   ├── blockstates/
+│   │       │   ├── models/
+│   │       │   │   ├── block/
+│   │       │   │   └── item/
+│   │       │   ├── textures/
+│   │       │   │   ├── entity/
+│   │       │   │   │   ├── platypus.png
+│   │       │   │   │   └── snail.png
+│   │       │   │   └── item/
+│   │       └── data/platypusmod/
+│   │           ├── recipes/
+│   │           ├── loot_tables/
+│   │           └── tags/
+└── LICENSE.txt
+```
+
+---
+
+## 🛠️ Development Tips
+
+* **Run Client**: `./gradlew genIntellijRuns runClient` or via your IDE run configs.
+* **Run Data Generation**: `./gradlew runData` to auto‑generate JSONs.
+* **Debug Logging**: Adjust log levels in `resources/log4j2.xml`.
+
+---
+
+## 📜 License
+
+This mod is released under the **MIT License**. See [LICENSE](LICENSE) for details.
+
+---
