@@ -4,6 +4,11 @@ An early‑stage Forge mod adding **platypuses (ornithorynques)** and **snails**
 
 > *This mod is a Work In Progress — expect bugs and missing features!*
 
+![Platypuses](https://github.com/user-attachments/assets/d30144af-579b-49a6-a850-b6d0907629a9)
+
+![Showcase](https://github.com/user-attachments/assets/65737bbb-1992-4709-9b5a-69a3cb903751)
+
+
 ---
 
 ## 📦 Features
