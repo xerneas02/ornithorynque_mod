@@ -16,7 +16,7 @@ An early‑stage Forge mod adding **platypuses (ornithorynques)** and **snails**
 
 * 🥚 **Platypus Eggs & Buckets**
 
-  * Platypuses randomly drop eggs.
+  * Platypus randomly drop eggs.
   * Platypus eggs act like chicken eggs.
   * `platypus_in_bucket` item: capture adult platypus in a bucket, carry & release.
 
